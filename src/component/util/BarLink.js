@@ -1,10 +1,9 @@
 import React from "react";
 import LoginForm from "../Login/Loginform";
-import { Beranda } from "../Beranda/Beranda";
+import { Beranda } from "../Page/Beranda";
 import { Routes, Route } from "react-router-dom";
-import History from "../History/History";
-import Genres from "../Genre/Genres";
-
+import History from "../Page/History"
+import Genres from "../Page/Genres";
 
 const BarLink = () => {
   return (

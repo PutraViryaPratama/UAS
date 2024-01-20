@@ -10,39 +10,39 @@ import { useEffect, useState } from "react";
 export const Beranda = () => {
 
     
-    const [hotKomik, sethotKomik] = useState([]);
-    const [newList, setnewList] = useState([])
-    const Listkomik = async () => {
+    // const [hotKomik, sethotKomik] = useState([]);
+    // const [newList, setnewList] = useState([])
+    // const Listkomik = async () => {
 
 
 
-        const options = {
-            method: 'GET',
-            url: 'https://indonesia-komik.p.rapidapi.com/v1/browse',
-            headers: {
-                lulThings: 'iyainiyainiyainde123',
-                'X-RapidAPI-Key': '518ee87599msh97059fc9bea1a68p14cd26jsn983c4317a477',
-                'X-RapidAPI-Host': 'indonesia-komik.p.rapidapi.com'
-            }
-        };
+    //     const options = {
+    //         method: 'GET',
+    //         url: 'https://indonesia-komik.p.rapidapi.com/v1/browse',
+    //         headers: {
+    //             lulThings: 'iyainiyainiyainde123',
+    //             'X-RapidAPI-Key': '518ee87599msh97059fc9bea1a68p14cd26jsn983c4317a477',
+    //             'X-RapidAPI-Host': 'indonesia-komik.p.rapidapi.com'
+    //         }
+    //     };
 
-        try {
-            const response = await axios.request(options);
-            console.log(response.data);
-            sethotKomik(response.data.hotList)
-            setnewList(response.data.newsList)
-        } catch (error) {
-            console.error(error);
-        }
-    }
-    useEffect(() => {
-        Listkomik();
-    }, []);
+    //     try {
+    //         const response = await axios.request(options);
+    //         console.log(response.data);
+    //         sethotKomik(response.data.hotList)
+    //         setnewList(response.data.newsList)
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
+    // useEffect(() => {
+    //     Listkomik();
+    // }, []);
 
     return (
         <div className={gaya.container}>
             <Bar />
-            <div className="hot komik">
+            {/* <div className="hot komik">
                 <Typography variant="h1" sx={{ background: "black", color: "white" }}>Hot Komik</Typography>
                 <Grid container spacing={2} sx={{ ml: 4 }}>
                     {hotKomik.map((komik) => (
@@ -84,7 +84,7 @@ export const Beranda = () => {
 
                     ))}
                 </Grid>
-            </div>
+            </div> */}
 
             <Footer />
         </div>

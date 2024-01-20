@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AppBar, Typography, Toolbar, Grid, IconButton, Button } from "@mui/material"
 import AutoStoriesRoundedIcon from '@mui/icons-material/AutoStoriesRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
@@ -8,6 +8,28 @@ import { Link } from "react-router-dom";
 
 
 export default function Bar() {
+
+    const [isLoggedin, setIsLoggedin] = useState("")
+    const [userID, setUserID] = useState("")
+
+    useEffect(() => {
+        const loggedIn = localStorage.getItem("loggedInStatus");
+        if (loggedIn === "true") {
+            setIsLoggedin(true);
+            const storedUserID = localStorage.getItem("id");
+            setUserID(storedUserID)
+        } else {
+            setIsLoggedin(false);
+            setUserID('');
+        }
+    }, [])
+
+    const handleLogout = () => {
+        localStorage.removeItem('loggedInStatus');
+        localStorage.removeItem('id');
+        setIsLoggedin(false);
+        setUserID('')
+    }
     return (
         <AppBar color="default" position="static">
             <Toolbar>
@@ -15,7 +37,7 @@ export default function Bar() {
                 <Grid container spacing={4} alignItems="center" flexWrap="wrap" justifyContent='center' marginTop='10px'>
                     <IconButton>
                         <Grid item sx={{ fontFamily: 'Arial', color: 'blue', fontWeight: 'bold', marginRight: '30px' }}>
-                            <Link to="/beranda" style={{textDecoration:'none', color:"black"}} >
+                            <Link to="/beranda" style={{ textDecoration: 'none', color: "black" }} >
                                 <Typography>SAN</Typography>
                                 <Typography>TOON</Typography>
                             </Link>
@@ -28,7 +50,7 @@ export default function Bar() {
                     </IconButton>
                     <IconButton>
                         <Grid item>
-                            <Link to="/genre" style={{textDecoration:'none', color:"black"}}>
+                            <Link to="/genre" style={{ textDecoration: 'none', color: "black" }}>
                                 <Typography>GENRE</Typography>
                             </Link>
                         </Grid>
@@ -40,7 +62,7 @@ export default function Bar() {
                     </IconButton>
                     <IconButton>
                         <Grid item>
-                            <Link to="/history" style={{textDecoration:'none', color:"black"}}>
+                            <Link to="/history" style={{ textDecoration: 'none', color: "black" }}>
                                 <Typography>History</Typography>
                             </Link>
                         </Grid>
@@ -64,9 +86,14 @@ export default function Bar() {
                         </Button>
                     </Grid>
                     <Grid item marginTop='-30px'>
-                        <Button variant="outlined" Width='5px' sx={{ fontSize: '10px', background: 'white', color: 'green', borderRadius: '30px' }} >
-                            Masuk
-                        </Button>
+                        {
+                            isLoggedin ? (<li>welcome, user {userID} <Button onClick={handleLogout}>Logout</Button></li>)
+                                :
+                                <Button href="/" variant="outlined" Width='5px' sx={{ fontSize: '10px', background: 'white', color: 'green', borderRadius: '30px' }} >
+                                    Masuk
+                                </Button>
+                        }
+
                     </Grid>
                     <Grid item marginTop='-30px'>
                         <Typography>|</Typography>
@@ -78,6 +105,6 @@ export default function Bar() {
                     </Grid>
                 </Grid>
             </Toolbar>
-        </AppBar>
+        </AppBar >
     )
 }

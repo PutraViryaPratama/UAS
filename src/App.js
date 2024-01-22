@@ -1,5 +1,5 @@
 import React from "react";
-import BarLink from "./component/util/BarLink";
+import BarLink from "./component/Routes/BarLink";
 
 
 

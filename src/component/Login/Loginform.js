@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import "./loginform.css";
 import axios from "axios";
+import { Button } from "@mui/material";
 
 const LoginForm = () => {
+
     const [id, setUserID] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -21,12 +23,12 @@ const LoginForm = () => {
             );
 
             console.log("Response Status:", response.status);
+        
 
             if (response.status === 200) {
                 if (response.data.id) {
                     console.log("Login Successful", response.data);
                     localStorage.setItem('loggedInStatus', 'true');
-                    localStorage.setItem('token', response.data.token);
                     localStorage.setItem('id', response.data.id)
                     // Redirect ke halaman beranda jika login berhasil
                     navigate("/beranda");
@@ -48,8 +50,7 @@ const LoginForm = () => {
                 // Terjadi kesalahan selama pengolahan permintaan
                 console.error("Error During Request Processing:", error.message);
             }
-        }
-    };
+        }    };
 
 
 
@@ -61,7 +62,7 @@ const LoginForm = () => {
                     <input
                         className="in"
                         type="text"
-                        placeholder="Username"
+                        placeholder="UserID"
                         value={id}
                         onChange={(e) => setUserID(e.target.value)}
                     />
@@ -76,10 +77,10 @@ const LoginForm = () => {
                         Login
                     </button>
                 </form>
-                <p className="text">Or login using</p>
+                <h3 onClick={() =>navigate('/forgot')} className="text">forgot password?</h3>
                 <div className="alt-login">
-                    <div className="facebook"></div>
-                    <div className="google"></div>
+                    <Button onClick={()=>navigate('/test')}>Sign up</Button>
+                   
                 </div>
             </div>
         </div>

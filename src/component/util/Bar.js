@@ -5,8 +5,6 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { Link } from "react-router-dom";
 
 
-
-
 export default function Bar() {
 
     const [isLoggedin, setIsLoggedin] = useState("")
@@ -87,7 +85,7 @@ export default function Bar() {
                     </Grid>
                     <Grid item marginTop='-30px'>
                         {
-                            isLoggedin ? (<li>welcome, user {userID} <Button onClick={handleLogout}>Logout</Button></li>)
+                            isLoggedin ? (<Typography>welcome, user {userID} <Button onClick={handleLogout}>Logout</Button></Typography>)
                                 :
                                 <Button href="/" variant="outlined" Width='5px' sx={{ fontSize: '10px', background: 'white', color: 'green', borderRadius: '30px' }} >
                                     Masuk

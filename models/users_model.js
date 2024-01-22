@@ -17,7 +17,35 @@ async function usersDetailByID(id) {
   }
 }
 
+async function insertByID(id, password, email) {
+  try {
+    const [result] = await connection.execute(
+      "INSERT INTO tbl_users (id, password, email) VALUES (?, ?, ?)",
+      [id, password, email]
+    );
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function updateByID(id, password) {
+  try {
+    const [result] = await connection.execute(
+      "UPDATE tbl_users SET password = ? WHERE id = ?",
+      [password, id]
+    );
+    return result;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
+
 module.exports = {
   users,
-  usersDetailByID
+  usersDetailByID,
+  insertByID,
+  updateByID,
 };

@@ -33,16 +33,6 @@ export default function History({ historyKomik }) {
                         style={{ maxWidth: "100%", height: "auto", width: "200px" }}
                     />
                    
-
-                    {/* <Grid container spacing={12} >
-                        {getImg.map((item) => (
-                            <Grid item key={item.cover}>
-                                <IconButton >
-                                    <img src={item} />
-                                </IconButton>
-                            </Grid>
-                        ))}
-                    </Grid> */}
                 </div>
             </div>
             <Footer />

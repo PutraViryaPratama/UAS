@@ -30,24 +30,19 @@ const LoginForm = () => {
                     console.log("Login Successful", response.data);
                     localStorage.setItem('loggedInStatus', 'true');
                     localStorage.setItem('id', response.data.id)
-                    // Redirect ke halaman beranda jika login berhasil
                     navigate("/beranda");
                 }
 
             } else {
                 console.log("Login Failed", response.data);
-                // Tampilkan pesan kesalahan kepada pengguna atau lakukan tindakan lainnya
             }
         } catch (error) {
             if (error.response) {
-                // Respons diterima dengan status yang bukan 2xx
                 console.log("Error Response Data:", error.response.data);
                 console.log("Error Response Status:", error.response.status);
             } else if (error.request) {
-                // Permintaan dikirim tetapi tidak menerima respons
                 console.log("No Response Received");
             } else {
-                // Terjadi kesalahan selama pengolahan permintaan
                 console.error("Error During Request Processing:", error.message);
             }
         }    };

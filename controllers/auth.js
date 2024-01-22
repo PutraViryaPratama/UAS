@@ -13,14 +13,14 @@ async function login(req, res) {
     }
 
     const token = jwt.sign(
-      { id: result[0].id, name: result[0].name },
+      { id: result.id },
       "secret",
       { expiresIn: "2 days" }
     );
 
     res.json({
       message: "Login success",
-      id: result[0].id,
+      id: result.id,
       token: token,
     });
   } catch (error) {

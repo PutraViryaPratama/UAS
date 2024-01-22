@@ -21,31 +21,31 @@ app.use('/web', webRoutes);
 const storage = multer()
 
 // define route
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello World!");
+// });
 
 // route user
-app.get("/users", (req, res) => {
-  connection.query("SELECT * FROM tbl_users", (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result);
-    }
-  });
-});
+// app.get("/users", (req, res) => {
+//   connection.query("SELECT * FROM tbl_users", (err, result) => {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       res.send(result);
+//     }
+//   });
+// });
 
-app.post("/users", (req, res) => {  // kirim data dari json body.
-  connection.query("INSERT INTO tbl_users SET ?", req.body, (err, result) => {
-    if (err) {
-      console.log(err);
-      return;
-    } else {
-      res.send(result);
-    }
-  })
-})
+// app.post("/users", (req, res) => {  // kirim data dari json body.
+//   connection.query("INSERT INTO tbl_users SET ?", req.body, (err, result) => {
+//     if (err) {
+//       console.log(err);
+//       return;
+//     } else {
+//       res.send(result);
+//     }
+//   })
+// })
 
 app.post("/users-formdata", storage.none(), (req, res) => {  //storage.none() digunakan untuk terima form-data multipart
   res.send(req.body);
